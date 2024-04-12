@@ -7,7 +7,7 @@
     "frontity"
   ],
   "engines": {
-    "node": ">=10.0.0",
+    "node": "12.22.6",
     "npm": ">=6.0.0"
   },
   "scripts": {
@@ -23,11 +23,15 @@
     "@frontity/tiny-router": "^1.4.4",
     "@frontity/wp-source": "^1.11.7",
     "axios": "^1.6.8",
-    "electron": "^29.2.0",
     "frontity": "^1.17.2",
     "gsap": "^3.12.5",
     "scrollmagic": "^2.0.8",
     "scrollmagic-plugin-gsap": "^1.0.4",
     "swiper": "^9.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10"    
   }
 }

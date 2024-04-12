@@ -1,4 +1,6 @@
 import { css } from "frontity";
+import ContactForm from "../components/inc/contactform";
+import Cf7FormWrapper from "../components/inc/cf7";
 
 const ContactPage = ({ fields }) => {
   return (
@@ -70,173 +72,9 @@ const ContactPage = ({ fields }) => {
                       {fields.contact.text}
                     </p>
                   )}
-
-                  <div
-                    className="wpcf7 js"
-                    id="wpcf7-f294-o1"
-                    lang="en-US"
-                    dir="ltr"
-                  >
-                    <div className="screen-reader-response">
-                      <p
-                        role="status"
-                        aria-live="polite"
-                        aria-atomic="true"
-                      ></p>{" "}
-                      <ul></ul>
-                    </div>
-                    <form
-                      action="/contact-us/#wpcf7-f294-o1"
-                      method="post"
-                      className="wpcf7-form init"
-                      aria-label="Contact form"
-                      novalidate="novalidate"
-                      data-status="init"
-                    >
-                      <div className="contact-page__form-row">
-                        <div className="contact-page__form-field">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="first-name"
-                          >
-                            <input
-                              size="40"
-                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              value=""
-                              type="text"
-                              name="first-name"
-                            />
-                          </span>
-                          <label className="contact-page__form-field-label">
-                            First name*
-                          </label>
-                        </div>
-                        <div className="contact-page__form-field">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="last-name"
-                          >
-                            <input
-                              size="40"
-                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              value=""
-                              type="text"
-                              name="last-name"
-                            />
-                          </span>
-                          <label className="contact-page__form-field-label">
-                            Last name*
-                          </label>
-                        </div>
-                      </div>
-                      <div className="contact-page__form-row">
-                        <div className="contact-page__form-field">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="company"
-                          >
-                            <input
-                              size="40"
-                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              value=""
-                              type="text"
-                              name="company"
-                            />
-                          </span>
-                          <label className="contact-page__form-field-label">Company*</label>
-                        </div>
-                        <div className="contact-page__form-field">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="city"
-                          >
-                            <input
-                              size="40"
-                              className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                              aria-required="true"
-                              aria-invalid="false"
-                              value=""
-                              type="text"
-                              name="city"
-                            />
-                          </span>
-                          <label className="contact-page__form-field-label">City*</label>
-                        </div>
-                      </div>
-                      <div className="contact-page__form-row">
-                        <div className="contact-page__form-field">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="email"
-                          >
-                            <input
-                              size="40"
-                              className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
-                              aria-required="true"
-                              aria-invalid="false"
-                              value=""
-                              type="email"
-                              name="email"
-                            />
-                          </span>
-                          <label className="contact-page__form-field-label">Email*</label>
-                        </div>
-                        <div className="contact-page__form-field">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="phone"
-                          >
-                            <input
-                              size="40"
-                              className="wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel"
-                              aria-required="true"
-                              aria-invalid="false"
-                              value=""
-                              type="tel"
-                              name="phone"
-                            />
-                          </span>
-                          <label className="contact-page__form-field-label">Phone*</label>
-                        </div>
-                      </div>
-                      <div className="contact-page__form-row">
-                        <div className="contact-page__form-field textarea">
-                          <span
-                            className="wpcf7-form-control-wrap"
-                            data-name="message"
-                          >
-                            <textarea
-                              cols="40"
-                              rows="10"
-                              className="wpcf7-form-control wpcf7-textarea"
-                              aria-invalid="false"
-                              name="message"
-                            ></textarea>
-                          </span>{" "}
-                          <label className="contact-page__form-field-label">Message</label>
-                        </div>
-                      </div>
-                      <div className="contact-page__form-row">
-                        <div className="contact-page__form-field">
-                          <input
-                            className="wpcf7-form-control has-spinner wpcf7-submit black-cta-l"
-                            type="submit"
-                            value="Submit"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="wpcf7-response-output"
-                        aria-hidden="true"
-                      ></div>
-                    </form>
-                  </div>
+                  <Cf7FormWrapper url="https://www.wp-react.bato-webdesign.net/wp-json/contact-form-7/v1/contact-forms/294/feedback/">
+                    <ContactForm />
+                  </Cf7FormWrapper>
                 </div>
               )}
             </div>
@@ -337,6 +175,10 @@ const form_styles = css`
   position: relative;
   min-height: 126rem;
 
+  .form-response {
+    font-size: 14px;
+  }
+
   @media screen and (max-width: 1025px) {
     min-height: 111rem;
   }
@@ -366,7 +208,7 @@ const form_styles = css`
   textarea {
     width: 100%;
     height: 14.4rem;
-    padding: 2.2rem 1.6rem;
+    padding: 3.4rem 1.6rem;
     border: 1px solid var(--color-gray-light);
     border-radius: 4px;
     appearance: none;
@@ -496,7 +338,7 @@ const form_styles = css`
       &-label {
         position: absolute;
         left: 1.6rem;
-        top: 3.1rem;
+        top: 2.1rem;
         transform: translateY(-50%);
         color: var(--color-gray);
         font-family: "GeneralSans", sans-serif;

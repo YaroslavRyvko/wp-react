@@ -26,7 +26,7 @@ const InsightsPage = ({ props }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await axios.get(
-        "https://wp-react.bato-webdesign.net/wp-json/wp/v2/insights-category"
+        "https://www.wp-react.bato-webdesign.net/wp-json/wp/v2/insights-category"
       );
       setCategories(response.data);
     };
@@ -34,7 +34,7 @@ const InsightsPage = ({ props }) => {
 
     const fetchRecentPost = async () => {
       const response = await axios.get(
-        "https://wp-react.bato-webdesign.net/wp-json/wp/v2/insights?per_page=1&order=desc"
+        "https://www.wp-react.bato-webdesign.net/wp-json/wp/v2/insights?per_page=1&order=desc"
       );
       const post = response.data[0];
       setRecentPost(post);

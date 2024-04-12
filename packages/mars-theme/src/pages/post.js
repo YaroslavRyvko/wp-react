@@ -17,7 +17,7 @@ const Post = ({ post , state }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await axios.get(
-        "https://wp-react.bato-webdesign.net/wp-json/wp/v2/insights-category"
+        "https://www.wp-react.bato-webdesign.net/wp-json/wp/v2/insights-category"
       );
       setCategories(response.data);
     };

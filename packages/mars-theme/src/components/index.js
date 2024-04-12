@@ -11,6 +11,7 @@ import InsightsPage from "../pages/insights-page";
 // Components
 import Header from "./layouts/header";
 import Footer from "./layouts/footer";
+import Preloader from "./layouts/preloader";
 import BlockLoader from "./inc/blockloader";
 
 // Styles
@@ -24,7 +25,7 @@ const Theme = ({ state }) => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await state.source.get(state.router.link);
-      const waitForReady = async (data, timeout = 100, maxAttempts = 50) => {
+      const waitForReady = async (data, timeout = 100, maxAttempts = 150) => {
         let attempts = 0;
         while (!data.isReady && attempts < maxAttempts) {
           await new Promise((resolve) => setTimeout(resolve, timeout));
@@ -53,7 +54,7 @@ const Theme = ({ state }) => {
   }, [state.router.link]);
 
   if (!page) {
-    return <div>Loading...</div>;
+    return <Preloader />;
   }
 
   return (

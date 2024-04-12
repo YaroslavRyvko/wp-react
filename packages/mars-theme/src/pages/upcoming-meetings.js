@@ -34,7 +34,7 @@ const UpcomingMeetingsPage = ({ fields }) => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await axios.get("https://wp-react.bato-webdesign.net/wp-json/wp/v2/events-category");
+      const response = await axios.get("https://www.wp-react.bato-webdesign.net/wp-json/wp/v2/events-category");
       setCategories(response.data);
     };
 

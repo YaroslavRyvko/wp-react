@@ -15,7 +15,7 @@ const Header = () => {
 
   useEffect(() => {
     axios
-      .get("https://wp-react.bato-webdesign.net/wp-json/acf/v3/options/options")
+      .get("https://www.wp-react.bato-webdesign.net/wp-json/acf/v3/options/options")
       .then((response) => {
         setLogo(response.data.acf.logo);
         setHeaderLinks(response.data.acf.header_links);
@@ -25,7 +25,7 @@ const Header = () => {
       });
 
     axios
-      .get("https://wp-react.bato-webdesign.net/wp-json/menus/v1/menus/main-menu")
+      .get("https://www.wp-react.bato-webdesign.net/wp-json/menus/v1/menus/main-menu")
       .then((response) => {
         setMenu(response.data.items);
       });

@@ -13,7 +13,7 @@ const InsightsBlock = ({ fields }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       const response = await axios.get(
-        "https://wp-react.bato-webdesign.net/wp-json/wp/v2/insights-category"
+        "https://www.wp-react.bato-webdesign.net/wp-json/wp/v2/insights-category"
       );
       setCategories(response.data);
     };
@@ -25,7 +25,7 @@ const InsightsBlock = ({ fields }) => {
   useEffect(() => {
     const fetchInsights = async () => {
       let endpoint =
-        "https://wp-react.bato-webdesign.net/wp-json/wp/v2/insights?per_page=4&status=publish";
+        "https://www.wp-react.bato-webdesign.net/wp-json/wp/v2/insights?per_page=4&status=publish";
       if (selectedCategoryId) {
         endpoint += `&insights-category=${selectedCategoryId}`;
       }

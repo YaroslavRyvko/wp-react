@@ -4,24 +4,30 @@ import LinkedinIcon from "../../images/linkedin";
 import { css } from "frontity";
 import iconSubmitUrl from "../../images/footer-form-icon.svg";
 import Link from "@frontity/components/link";
+import Cf7FormWrapper from "../inc/cf7";
+import NewsLetterForm from "../inc/newsletterform";
 
 const Footer = () => {
   const [logo, setLogo] = useState(null);
   const [headerLinks, setHeaderLinks] = useState({});
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [form, setForm] = useState("");
-  const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email);
-    setEmail("");
-  };
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://wp-react.bato-webdesign.net/wp-json/acf/v3/options/options")
+      .get(
+        "https://www.wp-react.bato-webdesign.net/wp-json/menus/v1/menus/main-menu"
+      )
+      .then((response) => {
+        setMenu(response.data.items);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://www.wp-react.bato-webdesign.net/wp-json/acf/v3/options/options")
       .then((response) => {
         const data = response.data.acf;
         setLogo(data.logo);
@@ -50,7 +56,10 @@ const Footer = () => {
               Reserved
             </div>
             {headerLinks.linkedin && (
-              <Link link={headerLinks.linkedin.url} className="footer__link-icon">
+              <Link
+                link={headerLinks.linkedin.url}
+                className="footer__link-icon"
+              >
                 <LinkedinIcon />
               </Link>
             )}
@@ -58,7 +67,20 @@ const Footer = () => {
           <div className="footer__middle">
             <p className="footer-title text-xs-medium">Sitemap</p>
             <nav className="footer__navigation">
-              {/* Render your navigation menu here */}
+              <ul className="footer__menu">
+                {menu.map((item, index) => (
+                  <li key={index} className="menu-item">
+                    <Link
+                      onClick={() => {
+                        toggleMenu();
+                      }}
+                      link={item.slug || "/"}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </nav>
           </div>
           <div className="footer__right">
@@ -66,16 +88,9 @@ const Footer = () => {
             {text && <p className="footer-text">{text}</p>}
 
             <div className="footer-form">
-              <form>
-                <input
-                  size="40"
-                  placeholder="Enter your email"
-                  value=""
-                  type="email"
-                />
-                <button className="submit-btn"></button>
-              </form>
-
+              <Cf7FormWrapper url="https://www.wp-react.bato-webdesign.net/wp-json/contact-form-7/v1/contact-forms/100/feedback/">
+                <NewsLetterForm />
+              </Cf7FormWrapper>
             </div>
           </div>
         </div>
@@ -91,6 +106,11 @@ const styles = css`
   border-top: 1px solid var(--color-gray-light);
   background-color: var(--color-gray2);
   font-family: "GeneralSans", sans-serif;
+
+  .form-response {
+    font-size: 12px;
+    margin-top: 10px;
+  }
 
   .single-insights & {
     background-color: #fff;
